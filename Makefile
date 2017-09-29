@@ -16,4 +16,4 @@ all: test
 	$(CC) -c $< -o $@
 
 clean:
-	rm -rf *.o pig test
+	rm -rf *.o pig test *.dSYM

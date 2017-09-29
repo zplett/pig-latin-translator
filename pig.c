@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+/// Macro with 100 slots for characters, 3 slots for pig-latin endings
+#define BUFFER_LENGTH 103
 
-#define BUFFER_LENGTH 102
 
+/* Static Functions Declarations */
 static void pigify(char (*)[]); 
+/* External Function Declarations */
 int is_vowel(char, int);
+// End of function declarations //
 
+/** Rearranges the indices of an array
+ *
+ *
+ */
 void pigify(char (*arr)[]) {
   char local_arr[BUFFER_LENGTH], ay[3], yay[4];
   int count = 0;
