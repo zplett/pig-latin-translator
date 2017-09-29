@@ -1,20 +1,18 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 #define BUFFER_LENGTH 102
 
-void pigify(static char (*)[]); 
+static void pigify(char (*)[]); 
 int is_vowel(char, int);
 
-int main() {
-  
-}
-
-void pigify(static char (*arr)[]) {
-  char local_arr[BUFFER_LENGTH], ay[2], yay[3];
+void pigify(char (*arr)[]) {
+  char local_arr[BUFFER_LENGTH], ay[3], yay[4];
   int count = 0;
-  strcopy(ay, "ay");
-  strcopy(yay, "yay");
-  for (i = 0; i < BUFFER_LENGTH; i++) {
+  strcpy(ay, "ay");
+  strcpy(yay, "yay");
+  for (int i = 0; i < BUFFER_LENGTH; i++) {
     if ((*arr)[i] == '\0') break;
     int valid = is_vowel((*arr)[i], i);
     if (valid == 0) {
@@ -41,8 +39,9 @@ void pigify(static char (*arr)[]) {
 
 int is_vowel(char ch, int count) {
  ch = tolower(ch);
- switch(ch):
+ switch(ch){
  case 'a': case 'e': case 'i': case 'o': case 'u': return 0;
  case 'y': if (count > 0) return 0;
  default: return 1;
-}
+ }
+ }

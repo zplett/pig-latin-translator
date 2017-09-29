@@ -10,10 +10,10 @@ else
 endif
 # End of OS specification
 
-all: pig
+all: test
 
 % : %.c pig.h
 	$(CC) -c $< -o $@
 
 clean:
-	rm -rf *.o pig 
+	rm -rf *.o pig test
