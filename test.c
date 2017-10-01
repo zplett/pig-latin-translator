@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "pig.c"
+#include "pigify.c"
 
 /** Testing Pigify function
  * 
