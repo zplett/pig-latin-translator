@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-/// Macro with 100 slots for characters, 3 slots for pig-latin endings
-#define BUFFER_LENGTH 103
 
 /* External Functions Declarations */
 void pigify(char (*)[]);
@@ -88,6 +86,11 @@ void anglofy(char (*arr)[]) {
   }
 }
 
+/** Validates whether a given char is a vowel. 
+ * This is done by checking if the char is an a, e, i, o, or u or if it is a y
+ * and not the first char in the array (signified by count being > 0). If it is a vowel then 
+ * the function returns 0 indicating true and if not it return 1 indicating false. 
+ */
 int is_vowel(char ch, int count) {
  ch = tolower(ch);
  switch(ch){

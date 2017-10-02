@@ -1,3 +1,5 @@
+#define BUFFER_LENGTH 103
+
 #ifndef PIGIFY
 #define PIGIFY
 void pigify(char (*)[]);
