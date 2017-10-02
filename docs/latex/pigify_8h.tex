@@ -1,0 +1,130 @@
+\hypertarget{pigify_8h}{}\section{pigify.\+h File Reference}
+\label{pigify_8h}\index{pigify.\+h@{pigify.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pigify_8h_af7b7dc9a200cb1404c280bd500fd1551}{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}~103
+\item 
+\#define \mbox{\hyperlink{pigify_8h_aeb9076d037a324e4a2887b8e03ea65f1}{I\+S\+\_\+\+V\+O\+W\+EL}}
+\item 
+\#define \mbox{\hyperlink{pigify_8h_aff971785e930e540a2157f81766005a7}{A\+N\+G\+L\+O\+FY}}
+\item 
+\#define \mbox{\hyperlink{pigify_8h_a431b92b32ec924789b2be268651a3fdd}{P\+U\+SH}}
+\item 
+\#define \mbox{\hyperlink{pigify_8h_adebfab11210714f40b67d7497ed02310}{F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER}}
+\item 
+\#define \mbox{\hyperlink{pigify_8h_a2f0c8cf5d3618605c5f6db54dbc872fd}{T\+E\+S\+T\+\_\+\+H\+O\+O\+KS}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pigify_8h_a8df909ff82ef61c92ca60dd86ea98266}{pigify}} (char($\ast$)\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Rearranges the entered array (representing a word in English) to represent a word in Pig Latin. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}{is\+\_\+vowel}} (char, int)
+\begin{DoxyCompactList}\small\item\em Validates whether a given char is a vowel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pigify_8h_a1887b5243c0b6f64e3e8b1c84e155459}{anglofy}} (char($\ast$)\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{pigify_8h_a048dc662b47a5df34cb128566c15bf60}{push}} (char($\ast$)\mbox{[}$\,$\mbox{]}, int $\ast$, const char)
+\item 
+void \mbox{\hyperlink{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}{flush\+\_\+buffer}} (char($\ast$)\mbox{[}$\,$\mbox{]}, const size\+\_\+t)
+\item 
+int \mbox{\hyperlink{pigify_8h_a20e656e57f8684c55987853a13a4d448}{push\+\_\+th}} ()
+\item 
+int \mbox{\hyperlink{pigify_8h_aa8d58a71b871356799bb1380214aa93e}{flush\+\_\+buffer\+\_\+th}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pigify_8h_aff971785e930e540a2157f81766005a7}\label{pigify_8h_aff971785e930e540a2157f81766005a7}} 
+\index{pigify.\+h@{pigify.\+h}!A\+N\+G\+L\+O\+FY@{A\+N\+G\+L\+O\+FY}}
+\index{A\+N\+G\+L\+O\+FY@{A\+N\+G\+L\+O\+FY}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{A\+N\+G\+L\+O\+FY}{ANGLOFY}}
+{\footnotesize\ttfamily \#define A\+N\+G\+L\+O\+FY}
+
+\mbox{\Hypertarget{pigify_8h_af7b7dc9a200cb1404c280bd500fd1551}\label{pigify_8h_af7b7dc9a200cb1404c280bd500fd1551}} 
+\index{pigify.\+h@{pigify.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}{BUFFER\_LENGTH}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH~103}
+
+\mbox{\Hypertarget{pigify_8h_adebfab11210714f40b67d7497ed02310}\label{pigify_8h_adebfab11210714f40b67d7497ed02310}} 
+\index{pigify.\+h@{pigify.\+h}!F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER@{F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER}}
+\index{F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER@{F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER}{FLUSH\_BUFFER}}
+{\footnotesize\ttfamily \#define F\+L\+U\+S\+H\+\_\+\+B\+U\+F\+F\+ER}
+
+\mbox{\Hypertarget{pigify_8h_aeb9076d037a324e4a2887b8e03ea65f1}\label{pigify_8h_aeb9076d037a324e4a2887b8e03ea65f1}} 
+\index{pigify.\+h@{pigify.\+h}!I\+S\+\_\+\+V\+O\+W\+EL@{I\+S\+\_\+\+V\+O\+W\+EL}}
+\index{I\+S\+\_\+\+V\+O\+W\+EL@{I\+S\+\_\+\+V\+O\+W\+EL}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{I\+S\+\_\+\+V\+O\+W\+EL}{IS\_VOWEL}}
+{\footnotesize\ttfamily \#define I\+S\+\_\+\+V\+O\+W\+EL}
+
+\mbox{\Hypertarget{pigify_8h_a431b92b32ec924789b2be268651a3fdd}\label{pigify_8h_a431b92b32ec924789b2be268651a3fdd}} 
+\index{pigify.\+h@{pigify.\+h}!P\+U\+SH@{P\+U\+SH}}
+\index{P\+U\+SH@{P\+U\+SH}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{P\+U\+SH}{PUSH}}
+{\footnotesize\ttfamily \#define P\+U\+SH}
+
+\mbox{\Hypertarget{pigify_8h_a2f0c8cf5d3618605c5f6db54dbc872fd}\label{pigify_8h_a2f0c8cf5d3618605c5f6db54dbc872fd}} 
+\index{pigify.\+h@{pigify.\+h}!T\+E\+S\+T\+\_\+\+H\+O\+O\+KS@{T\+E\+S\+T\+\_\+\+H\+O\+O\+KS}}
+\index{T\+E\+S\+T\+\_\+\+H\+O\+O\+KS@{T\+E\+S\+T\+\_\+\+H\+O\+O\+KS}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{T\+E\+S\+T\+\_\+\+H\+O\+O\+KS}{TEST\_HOOKS}}
+{\footnotesize\ttfamily \#define T\+E\+S\+T\+\_\+\+H\+O\+O\+KS}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pigify_8h_a1887b5243c0b6f64e3e8b1c84e155459}\label{pigify_8h_a1887b5243c0b6f64e3e8b1c84e155459}} 
+\index{pigify.\+h@{pigify.\+h}!anglofy@{anglofy}}
+\index{anglofy@{anglofy}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{anglofy()}{anglofy()}}
+{\footnotesize\ttfamily void anglofy (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}\label{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}} 
+\index{pigify.\+h@{pigify.\+h}!flush\+\_\+buffer@{flush\+\_\+buffer}}
+\index{flush\+\_\+buffer@{flush\+\_\+buffer}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{flush\+\_\+buffer()}{flush\_buffer()}}
+{\footnotesize\ttfamily void flush\+\_\+buffer (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]},  }\item[{const size\+\_\+t}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8h_aa8d58a71b871356799bb1380214aa93e}\label{pigify_8h_aa8d58a71b871356799bb1380214aa93e}} 
+\index{pigify.\+h@{pigify.\+h}!flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}}
+\index{flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{flush\+\_\+buffer\+\_\+th()}{flush\_buffer\_th()}}
+{\footnotesize\ttfamily int flush\+\_\+buffer\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}\label{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}} 
+\index{pigify.\+h@{pigify.\+h}!is\+\_\+vowel@{is\+\_\+vowel}}
+\index{is\+\_\+vowel@{is\+\_\+vowel}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{is\+\_\+vowel()}{is\_vowel()}}
+{\footnotesize\ttfamily int is\+\_\+vowel (\begin{DoxyParamCaption}\item[{char}]{ch,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Validates whether a given char is a vowel. 
+
+This is done by checking if the char is an a, e, i, o, or u or if it is a y and not the first char in the array (signified by count being $>$ 0). If it is a vowel then the function returns 0 indicating true and if not it return 1 indicating false. \mbox{\Hypertarget{pigify_8h_a8df909ff82ef61c92ca60dd86ea98266}\label{pigify_8h_a8df909ff82ef61c92ca60dd86ea98266}} 
+\index{pigify.\+h@{pigify.\+h}!pigify@{pigify}}
+\index{pigify@{pigify}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{pigify()}{pigify()}}
+{\footnotesize\ttfamily void pigify (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Rearranges the entered array (representing a word in English) to represent a word in Pig Latin. 
+
+The Algorithm is as follows\+:
+
+Iterate through each index in the array\+: If the current index is the null character (\textquotesingle{}\textbackslash{}0\textquotesingle{}) then break out of the for loop. If the current index isn\textquotesingle{}t the null character, then call the helper function \mbox{\hyperlink{pigify_8c_a554fd984b3ae50961cf56687428d386b}{is\+\_\+vowel()}}. This function takes in a character and a count (representing the char\textquotesingle{}s place in the array). If it\textquotesingle{}s an a,e,i,o,u, or a y -\/ provided the y isn\textquotesingle{}t the first char in the array, then return 0 indicating that the given character is a vowel, otherwise return 1 meaning the character isn\textquotesingle{}t a vowel. If the character isn\textquotesingle{}t a vowel, then add it to the array local\+\_\+arr. This array represents all the consonants in the word that come before the first vowel. After the first vowel is found, these will be concatenated to the end of the array before adding the Pig Latin ending (\char`\"{}yay\char`\"{} or \char`\"{}ay\char`\"{}). If the character is a vowel, then check if it\textquotesingle{}s the first index of the word. If the vowel is the first index in the word, concatenate the string \char`\"{}yay\char`\"{} (represented by the array yay). If the vowel isn\textquotesingle{}t the first index in the word, find the length of local\+\_\+arr (the amount of letters to be moved to the back of the array). Use this value to \char`\"{}shift\char`\"{} the letters in the array down by the value. This is done by iterating through the indicies in the word array and setting the value of each index equal to the value at that index + the value representing the number of letters in local\+\_\+arr and setting the value at index + length of local\+\_\+arr to null. After all the shifting has been completed, concatenate the input arr with local\+\_\+arr to have the removed letters placed on the end of the word. This is followed by concatenating the \char`\"{}ay\char`\"{} string on to the end of the arr vis a vis the ay array.
+
+This produces the correctly \char`\"{}pigified\char`\"{} word. \mbox{\Hypertarget{pigify_8h_a048dc662b47a5df34cb128566c15bf60}\label{pigify_8h_a048dc662b47a5df34cb128566c15bf60}} 
+\index{pigify.\+h@{pigify.\+h}!push@{push}}
+\index{push@{push}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily void push (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{,  }\item[{const char}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8h_a20e656e57f8684c55987853a13a4d448}\label{pigify_8h_a20e656e57f8684c55987853a13a4d448}} 
+\index{pigify.\+h@{pigify.\+h}!push\+\_\+th@{push\+\_\+th}}
+\index{push\+\_\+th@{push\+\_\+th}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{push\+\_\+th()}{push\_th()}}
+{\footnotesize\ttfamily int push\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
