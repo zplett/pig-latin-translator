@@ -68,12 +68,23 @@ void pigify(char (*arr)[]) {
 }
 
 void anglofy(char (*arr)[]) {
-  for (int i = 0; i < BUFFER_LENGTH; i++) { if (arr[i+3] == '\0') char third = arr[i]; int index = i; }
-  if (third == 'y') { for (int k = index; k < index + 3; k++) arr[k] = '\0'; }
+  char third;
+  int index;
+  for (int i = 0; i < BUFFER_LENGTH; i++) {
+    if ((*arr)[i+3] == '\0'){
+      third = (*arr)[i];
+      index = i;
+      break;
+    }
+  }
+  if (third == 'y') {
+    for (int k = index; k < index + 3; k++)
+      (*arr)[k] = '\0';
+  }
   else {
-    for (int j = index; j < index + 3; j++) arr[j] = '\0';
-    for (int l = 0; l < BUFFER_LENGTH-1; l++) arr[l] = arr[l+1];
-    arr[0] = third;
+    for (int j = index; j < index + 3; j++) (*arr)[j] = '\0';
+    for (int l = index; l > 0; --l) (*arr)[l] = (*arr)[l -1];
+    (*arr)[0] = third;
   }
 }
 

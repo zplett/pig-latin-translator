@@ -6,7 +6,7 @@
 
 /* Static function definitions */
 static void flush_buffer(char (*)[], size_t);
-static void push(char (*)[], int const*, const char);
+static void push(char (*)[], int *, const char);
 /* External function definitions */
 int flush_buffer_th();
 int push_th(); 
@@ -26,16 +26,16 @@ void flush_buffer(char (*buffer)[], size_t count){
   }
 }
 
-void push(char (*arr)[], int const *index, const char element){
-  (*arr)[*(index++)] = element; 
+void push(char (*arr)[], int *index, const char element){
+  (*arr)[(*index)++] = element; 
 }
 
 int push_th(){
   char buffer[10] = {'h','e', 'l', 'l'};
   int index = 4;
   push(&buffer, &index, 'o');
-  if( index != 5 ) return 0;
-  if( buffer[4] != '0' ) return 0;
+  if( index != 5 )  { printf("Index does not increment\n"); return 0; }
+  if( buffer[4] != 'o' ) { printf("Element was not added correctly"); return 0; }
 
   return 1;
 }
