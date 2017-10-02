@@ -25,4 +25,4 @@ test: test.o pig.o
 #	$(CC) $< pig.o -o $@
 
 clean:
-	rm -rf *.o pig test *.dSYM
+	rm -rf *.o pig test *.dSYM *~
