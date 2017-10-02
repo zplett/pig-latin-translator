@@ -1,0 +1,80 @@
+\hypertarget{pigify_8c}{}\section{pigify.\+c File Reference}
+\label{pigify_8c}\index{pigify.\+c@{pigify.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pigify.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pigify_8c_a88eabc54c23b2f03fb48cc6b8e45f08a}{pigify}} (char($\ast$arr)\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Rearranges the entered array (representing a word in English) to represent a word in Pig Latin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pigify_8c_a1887b5243c0b6f64e3e8b1c84e155459}{anglofy}} (char($\ast$)\mbox{[}$\,$\mbox{]})
+\item 
+int \mbox{\hyperlink{pigify_8c_a554fd984b3ae50961cf56687428d386b}{is\+\_\+vowel}} (char ch, int count)
+\begin{DoxyCompactList}\small\item\em Validates whether a given char is a vowel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pigify_8c_a048dc662b47a5df34cb128566c15bf60}{push}} (char($\ast$)\mbox{[}$\,$\mbox{]}, int $\ast$, const char)
+\item 
+void \mbox{\hyperlink{pigify_8c_adfee288c1bc1cbf78ede8f6938bbb486}{flush\+\_\+buffer}} (char($\ast$)\mbox{[}$\,$\mbox{]}, const size\+\_\+t)
+\item 
+int \mbox{\hyperlink{pigify_8c_a20e656e57f8684c55987853a13a4d448}{push\+\_\+th}} ()
+\item 
+int \mbox{\hyperlink{pigify_8c_aa8d58a71b871356799bb1380214aa93e}{flush\+\_\+buffer\+\_\+th}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pigify_8c_a1887b5243c0b6f64e3e8b1c84e155459}\label{pigify_8c_a1887b5243c0b6f64e3e8b1c84e155459}} 
+\index{pigify.\+c@{pigify.\+c}!anglofy@{anglofy}}
+\index{anglofy@{anglofy}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{anglofy()}{anglofy()}}
+{\footnotesize\ttfamily void anglofy (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8c_adfee288c1bc1cbf78ede8f6938bbb486}\label{pigify_8c_adfee288c1bc1cbf78ede8f6938bbb486}} 
+\index{pigify.\+c@{pigify.\+c}!flush\+\_\+buffer@{flush\+\_\+buffer}}
+\index{flush\+\_\+buffer@{flush\+\_\+buffer}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{flush\+\_\+buffer()}{flush\_buffer()}}
+{\footnotesize\ttfamily void flush\+\_\+buffer (\begin{DoxyParamCaption}\item[{char($\ast$)}]{buffer\mbox{[}$\,$\mbox{]},  }\item[{const size\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8c_aa8d58a71b871356799bb1380214aa93e}\label{pigify_8c_aa8d58a71b871356799bb1380214aa93e}} 
+\index{pigify.\+c@{pigify.\+c}!flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}}
+\index{flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{flush\+\_\+buffer\+\_\+th()}{flush\_buffer\_th()}}
+{\footnotesize\ttfamily int flush\+\_\+buffer\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8c_a554fd984b3ae50961cf56687428d386b}\label{pigify_8c_a554fd984b3ae50961cf56687428d386b}} 
+\index{pigify.\+c@{pigify.\+c}!is\+\_\+vowel@{is\+\_\+vowel}}
+\index{is\+\_\+vowel@{is\+\_\+vowel}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{is\+\_\+vowel()}{is\_vowel()}}
+{\footnotesize\ttfamily int is\+\_\+vowel (\begin{DoxyParamCaption}\item[{char}]{ch,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Validates whether a given char is a vowel. 
+
+This is done by checking if the char is an a, e, i, o, or u or if it is a y and not the first char in the array (signified by count being $>$ 0). If it is a vowel then the function returns 0 indicating true and if not it return 1 indicating false. \mbox{\Hypertarget{pigify_8c_a88eabc54c23b2f03fb48cc6b8e45f08a}\label{pigify_8c_a88eabc54c23b2f03fb48cc6b8e45f08a}} 
+\index{pigify.\+c@{pigify.\+c}!pigify@{pigify}}
+\index{pigify@{pigify}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{pigify()}{pigify()}}
+{\footnotesize\ttfamily void pigify (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Rearranges the entered array (representing a word in English) to represent a word in Pig Latin. 
+
+The Algorithm is as follows\+:
+
+Iterate through each index in the array\+: If the current index is the null character (\textquotesingle{}\textbackslash{}0\textquotesingle{}) then break out of the for loop. If the current index isn\textquotesingle{}t the null character, then call the helper function \mbox{\hyperlink{pigify_8c_a554fd984b3ae50961cf56687428d386b}{is\+\_\+vowel()}}. This function takes in a character and a count (representing the char\textquotesingle{}s place in the array). If it\textquotesingle{}s an a,e,i,o,u, or a y -\/ provided the y isn\textquotesingle{}t the first char in the array, then return 0 indicating that the given character is a vowel, otherwise return 1 meaning the character isn\textquotesingle{}t a vowel. If the character isn\textquotesingle{}t a vowel, then add it to the array local\+\_\+arr. This array represents all the consonants in the word that come before the first vowel. After the first vowel is found, these will be concatenated to the end of the array before adding the Pig Latin ending (\char`\"{}yay\char`\"{} or \char`\"{}ay\char`\"{}). If the character is a vowel, then check if it\textquotesingle{}s the first index of the word. If the vowel is the first index in the word, concatenate the string \char`\"{}yay\char`\"{} (represented by the array yay). If the vowel isn\textquotesingle{}t the first index in the word, find the length of local\+\_\+arr (the amount of letters to be moved to the back of the array). Use this value to \char`\"{}shift\char`\"{} the letters in the array down by the value. This is done by iterating through the indicies in the word array and setting the value of each index equal to the value at that index + the value representing the number of letters in local\+\_\+arr and setting the value at index + length of local\+\_\+arr to null. After all the shifting has been completed, concatenate the input arr with local\+\_\+arr to have the removed letters placed on the end of the word. This is followed by concatenating the \char`\"{}ay\char`\"{} string on to the end of the arr vis a vis the ay array.
+
+This produces the correctly \char`\"{}pigified\char`\"{} word. \mbox{\Hypertarget{pigify_8c_a048dc662b47a5df34cb128566c15bf60}\label{pigify_8c_a048dc662b47a5df34cb128566c15bf60}} 
+\index{pigify.\+c@{pigify.\+c}!push@{push}}
+\index{push@{push}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily void push (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{index,  }\item[{const char}]{element }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pigify_8c_a20e656e57f8684c55987853a13a4d448}\label{pigify_8c_a20e656e57f8684c55987853a13a4d448}} 
+\index{pigify.\+c@{pigify.\+c}!push\+\_\+th@{push\+\_\+th}}
+\index{push\+\_\+th@{push\+\_\+th}!pigify.\+c@{pigify.\+c}}
+\subsubsection{\texorpdfstring{push\+\_\+th()}{push\_th()}}
+{\footnotesize\ttfamily int push\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
