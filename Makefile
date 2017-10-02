@@ -10,10 +10,19 @@ else
 endif
 # End of OS specification
 
-all: pig
+all: test
 
-% : %.c pig.h
-	$(CC) -c $< -o $@
+test.o: pigify.c test.c pigify.h
+	$(CC) -c pigify.c test.c
+
+test: test.o pigify.o
+	$(CC) test.o pigify.o -o test
+
+#%.o: %.c pig.c pig.h
+#	$(CC) -c pig.c $< 
+
+#% : %.o pig.o pig.h
+#	$(CC) $< pig.o -o $@
 
 clean:
-	rm -rf *.o pig 
+	rm -rf *.o pig test *.dSYM *~
