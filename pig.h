@@ -1,4 +1,6 @@
-#ifndef IS_VOWEL
-#define IS_VOWEL
-int is_vowel(char, int);
-#endif 
+#ifndef PIG_TEST_HOOKS
+#define PIG_TEST_HOOKS
+int flush_buffer_th();
+int push_th();
+#endif
+

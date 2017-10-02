@@ -12,8 +12,17 @@ endif
 
 all: test
 
-% : %.c pig.h
-	$(CC) -c $< -o $@
+test.o: pig.c test.c pig.h
+	$(CC) -c pig.c test.c
+
+test: test.o pig.o
+	$(CC) test.o pig.o -o test
+
+#%.o: %.c pig.c pig.h
+#	$(CC) -c pig.c $< 
+
+#% : %.o pig.o pig.h
+#	$(CC) $< pig.o -o $@
 
 clean:
 	rm -rf *.o pig test *.dSYM
