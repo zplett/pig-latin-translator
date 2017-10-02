@@ -12,11 +12,11 @@ endif
 
 all: test
 
-test.o: pig.c test.c pig.h
-	$(CC) -c pig.c test.c
+test.o: pigify.c test.c pigify.h
+	$(CC) -c pigify.c test.c
 
-test: test.o pig.o
-	$(CC) test.o pig.o -o test
+test: test.o pigify.o
+	$(CC) test.o pigify.o -o test
 
 #%.o: %.c pig.c pig.h
 #	$(CC) -c pig.c $< 

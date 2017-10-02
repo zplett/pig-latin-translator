@@ -1,6 +1,6 @@
 #include <assert.h>
-#include "pigify.c"
-#include "pig.h"
+#include <stdio.h>
+#include "pigify.h"
 
 /** Testing Pigify function
  * 

@@ -5,11 +5,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "pigify.h"
 
 /* External Functions Declarations */
 void pigify(char (*)[]);
 void anglofy(char (*)[]);
 int is_vowel(char, int);
+void push(char (*)[], int *, const char);
+void flush_buffer(char(*)[], const size_t);
+int push_th();
+int flush_buffer_th();
 // End of function declarations //
 
 
@@ -45,18 +50,18 @@ void pigify(char (*arr)[]) {
     int valid = is_vowel((*arr)[i], i);
     if (valid == 0) {
       if (i == 0) {
-	strcat((*arr), yay);
-	break;
+        strcat((*arr), yay);
+        break;
       }
       else if (i > 1) {
-	for (int j = 0; j < BUFFER_LENGTH; j++) { if (local_arr[j] == '\0') break; else count++; }
-	for (int k = 0; k < BUFFER_LENGTH; k++) { 
-	  (*arr)[k] = (*arr)[k+count];
-	  (*arr)[k+count] = '\0';
-	}
-	strcat((*arr), local_arr);
-	strcat((*arr), ay);
-  break;
+        for (int j = 0; j < BUFFER_LENGTH; j++) { if (local_arr[j] == '\0') break; else count++; }
+        for (int k = 0; k < BUFFER_LENGTH; k++) { 
+          (*arr)[k] = (*arr)[k+count];
+          (*arr)[k+count] = '\0';
+        }
+        strcat((*arr), local_arr);
+        strcat((*arr), ay);
+        break;
       }
     }
     else {
@@ -66,7 +71,7 @@ void pigify(char (*arr)[]) {
 }
 
 void anglofy(char (*arr)[]) {
-  char third;
+  char third = '\0';
   int index;
   for (int i = 0; i < BUFFER_LENGTH; i++) {
     if ((*arr)[i+3] == '\0'){
@@ -98,4 +103,37 @@ int is_vowel(char ch, int count) {
  case 'y': if (count > 0) return 0;
  default: return 1;
  }
+}
+
+
+
+void flush_buffer(char (*buffer)[], size_t count){
+  for(size_t i = 0; i < count; ++i) {
+    printf("%c", (*buffer)[i]);
+    (*buffer)[i] = '\0';
+  }
+}
+
+void push(char (*arr)[], int *index, const char element){
+  (*arr)[(*index)++] = element; 
+}
+
+int push_th(){
+  char buffer[10] = {'h','e', 'l', 'l'};
+  int index = 4;
+  push(&buffer, &index, 'o');
+  if( index != 5 )  { printf("Index does not increment\n"); return 0; }
+  if( buffer[4] != 'o' ) { printf("Element was not added correctly"); return 0; }
+
+  return 1;
+}
+
+int flush_buffer_th(){
+  // Test hook for flush_buffer
+  char buffer[10] = {'h','e','l','l','o'};
+  flush_buffer(&buffer, 5);
+  for(int i = 0; i < 10; ++i)
+    if( buffer[i] != '\0' ) return 0;
+
+  return 1;
 }
