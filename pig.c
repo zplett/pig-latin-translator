@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include "pigify.h"
-#include "pig.h"
 
 /** This program reads input flags if any are entered and if not calls the translation function 
  * to translate from English to Pig Latin.
@@ -19,3 +18,4 @@ int main(int argc, char *argv[]){
       return 0;
     }
   }
+}

@@ -12,16 +12,16 @@ endif
 
 all: pig unpig test extra
 
-pig.o: pig.c pig.h pigify.c pigify.h
+pig.o: pig.c pigify.c pigify.h
 	$(CC) -c pig.c pigify.c
 
-pig: pig.o pig.h pigify.o pigify.o
+pig: pig.o pigify.o pigify.o
 	$(CC)  pig.o pigify.o -o pig
 
-test.o: test.c pig.c pig.h pigify.c pigify.h
+test.o: test.c pig.c pigify.c pigify.h
 	$(CC) -c test.c pig.c pigify.c
 
-test: test.o pig.c pig.h pigify.o pigify.o
+test: test.o pig.c pigify.o pigify.o
 	$(CC) test.o pigify.o -o test
 
 unpig.o: unpig.c pigify.c pigify.h
