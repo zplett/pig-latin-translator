@@ -37,4 +37,4 @@ extra: extra.o
 	$(CC) extra.o -o extra
 
 clean:
-	rm -rf *.o pig extra test *.dSYM *~
+	rm -rf *.o unpig pig extra test *.dSYM *~
