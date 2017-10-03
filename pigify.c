@@ -175,8 +175,7 @@ int is_vowel(char ch, int count) {
  * set the corresponding value to be the null character as flushed arrays have null characters for all of their indicies. 
  */
 void flush_buffer(char (*buffer)[], int *count){
-  int offset = (*buffer)[*count] == 'y' ? 3 : 2;
-  for(int i = 0; i < *count + offset; ++i) {
+  for(int i = 0; (*buffer)[i] != '\0' ; ++i) {
     printf("%c", (*buffer)[i]);
     (*buffer)[i] = '\0';
   }
