@@ -29,7 +29,7 @@ unpig.o: unpig.c pigify.c pigify.h
 
 unpig: unpig.o pigify.o pigify.o
 	$(CC) unpig.o pigify.o -o unpig
-
+  
 extra.o: extra.c
 	$(CC) -c extra.c
 
@@ -38,3 +38,4 @@ extra: extra.o
 
 clean:
 	rm -rf *.o unpig pig extra test *.dSYM *~
+

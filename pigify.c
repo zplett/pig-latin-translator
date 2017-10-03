@@ -1,4 +1,4 @@
-/*
+/* 
  *
  *
  */
@@ -20,7 +20,19 @@ void structure(void(*)(char(*)[]));
 void contraction(char (*)[], int*);
 // End of function declarations //
 
-
+/** Abstracted method used to get input and correctly call the desired translation functions ( pigify() and anglofy() )
+ *
+ * structure() takes in the desired translation function and uses this to pass the input words to this method. The algorith is as follows:
+ * 
+ * Continually call getchar() to receive user input. If the input char is a punctuation mark, first 
+ * determine whether or not it's an apostrophe. If it is, that means the current word is a contraction, the program then calls the contraction() method that handles this case by leaving the input 
+ * in the same state it was entered in. If it's any other punctuation mark and not the first entered character, the program ungets the char, calls the translation function on the current buffer (as punctuation signals the end of a word) and then flushes the buffer using flush_buffer(). Else, if it's a punctuation mark and the first character in the word, the program just prints the char. 
+ * 
+ * If the character is a space, the program then prints it if it's the first character and otherwise it calls the translation function, flushes the buffer, and then prints the space. 
+ *
+ * Otherwise, if it's a letter, the program pushes the letter to the array using push() and then calls the translation function and flushes the buffer if the word is at max length. 
+ *
+ */ 
 void structure(void(*function)(char(*)[])){
   static char buffer[BUFFER_LENGTH] = {'\0'};
   for( int c = getchar(), count = 0; c != EOF; c = getchar()){
@@ -217,6 +229,11 @@ int flush_buffer_th(){
   return 1;
 }
 
+/** Handles outputting of entered contractions through the following: 
+ *
+ * Flush the buffer ( using flush_buffer() ) to output the letters before the apostrophe, then continually call getchar() and print the character until a space is entered. 
+ *
+ */
 void contraction(char (*buffer)[], int *count){
   flush_buffer(buffer, count);
   int c = getchar();
