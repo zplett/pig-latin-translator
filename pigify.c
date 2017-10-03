@@ -3,6 +3,7 @@
  *
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "pigify.h"
@@ -12,11 +13,51 @@ void pigify(char (*)[]);
 void anglofy(char (*)[]);
 int is_vowel(char, int);
 void push(char (*)[], int *, const char);
-void flush_buffer(char(*)[], const size_t);
+void flush_buffer(char(*)[], int*);
 int push_th();
 int flush_buffer_th();
+void structure(void(*)(char(*)[]));
+void contraction(char (*)[], int*);
 // End of function declarations //
 
+
+void structure(void(*function)(char(*)[])){
+  static char buffer[BUFFER_LENGTH] = {'\0'};
+  for( int c = getchar(), count = 0; c != EOF; c = getchar()){
+    if(ispunct(c)){
+      if (c == '\'')  {
+        ungetc(c, stdin);
+        contraction(&buffer, &count);
+        continue;
+      }
+      if(count > 0) {
+        ungetc(c, stdin);
+        function(&buffer);
+        flush_buffer(&buffer, &count);
+        continue;
+      }
+      else {
+        printf("%c", c);
+        continue;
+      }
+    }
+    else if(isspace(c)){
+      if( count == 0 ) { printf("%c", c); continue; }
+      function(&buffer);
+      flush_buffer(&buffer, &count);
+      printf("%c", c);
+      continue;
+    }  
+    else if(isalpha(c)){
+      push(&buffer, &count, c);
+      if(count == BUFFER_LENGTH){
+        function(&buffer);
+        flush_buffer(&buffer, &count);
+      }
+      continue;
+    }
+  }
+}
 
 /** Rearranges the entered array (representing a word in English) to represent a word in Pig Latin.
  *
@@ -41,19 +82,19 @@ int flush_buffer_th();
  *
  */ 
 void pigify(char (*arr)[]) {
-  char local_arr[BUFFER_LENGTH], ay[3], yay[4];
+  char *local_arr = malloc(strlen(*arr) + 1), ay[3], yay[4];
   int count = 0;
   strcpy(ay, "ay");
   strcpy(yay, "yay");
   for (int i = 0; i < BUFFER_LENGTH; i++) {
     if ((*arr)[i] == '\0') break;
     int valid = is_vowel((*arr)[i], i);
-    if (valid == 0) {
+    if (valid == 1) {
       if (i == 0) {
         strcat((*arr), yay);
         break;
       }
-      else if (i > 1) {
+      else if (i > 0) {
         for (int j = 0; j < BUFFER_LENGTH; j++) { if (local_arr[j] == '\0') break; else count++; }
         for (int k = 0; k < BUFFER_LENGTH; k++) { 
           (*arr)[k] = (*arr)[k+count];
@@ -68,8 +109,31 @@ void pigify(char (*arr)[]) {
       local_arr[i] = (*arr)[i];
     }
   }
+  free(local_arr);
 }
 
+/** Rearranges the elements in an array to undo the Pig Latin translation.
+ *
+ * The algorithm is as follows:
+ * 
+ * First find the index of the third to last character in the array and its corresponding value. We do this because the Pig Latin ending will either be the three letters "yay" or a non-y letter followed
+ * by "ay". 
+ * We find this by looping through the indicies of the array until the value of the current index + 3 is equal to the null character ('\0'). This provides us with the third to last character because 
+ * all indicies in the array after the last character will be null. We store this character in a char variable "third" and the index in an int variable "index".
+ * Next, to figure out how to unpigify the word, we figure out which of the two cases the current word falls under. The two cases are if the third to last letter is a 'y' (making the ending "yay") which 
+ * means the word had a vowel as its first letter or if the third to last letter isn't a 'y' (making the ending "ay") then there were some unknown number of consonants that came before the first vowel. 
+ * If the word falls under the first case, then to unpigify it we simply remove the last three indicies by looping from index to index + 3 and setting those values to the null character. 
+ * If the word falls under the second case, then to unpigify it we first remove the ending, which will be a non-y letter followed by "ay". To unpigify after removing the ending we need to put the former
+ * third to last letter (stored in "third") at the front (Note: we realize that this won't always produce an accurate translation into English as that will only work if the original English word had 
+ * only one consonant before the first value. However this still accurately unpigifies a word as it removes the pig latin ending and attempts to rearrange the letters to form an English word. Since we 
+ * don't know how many letters came before the first vowel this will give us a close approximation and follows the integrity of the assignment as we were told to not worry about whether or not the 
+ * unpigify produces an English word so long as it properly removes the Pig Latin aspect of the word).
+ * This is done in the same manner as removing the "yay" ending described in the first case. After this we shift all the values at each index to the right by one to leave a space at the front of the 
+ * array for the former third to last letter. After all values are properly shifted we place the "third" value in the first index (0th) of the array. 
+ *
+ * This produces an accurate removal of the Pig Latin translation. 
+ *
+ */
 void anglofy(char (*arr)[]) {
   char third = '\0';
   int index;
@@ -99,25 +163,36 @@ void anglofy(char (*arr)[]) {
 int is_vowel(char ch, int count) {
  ch = tolower(ch);
  switch(ch){
- case 'a': case 'e': case 'i': case 'o': case 'u': return 0;
- case 'y': if (count > 0) return 0;
- default: return 1;
+ case 'a': case 'e': case 'i': case 'o': case 'u': return 1;
+ case 'y': if (count > 0) return 1;
+ default: return 0;
  }
 }
 
 
 
-void flush_buffer(char (*buffer)[], size_t count){
-  for(size_t i = 0; i < count; ++i) {
+/** Flushes a given buffer.
+ * This method flushes an input buffer given the array and its associated count representing the size of the array. We loop through the indicies from 0 to count, print the value at each index, and then 
+ * set the corresponding value to be the null character as flushed arrays have null characters for all of their indicies. 
+ */
+void flush_buffer(char (*buffer)[], int *count){
+  for(int i = 0; (*buffer)[i] != '\0' ; ++i) {
     printf("%c", (*buffer)[i]);
     (*buffer)[i] = '\0';
   }
+  *count = 0;
 }
 
+/** Pushes an element to a specified index in a given array.
+ * Given the input element, corresponding index, and array, we set the array's value at the index to be the element.
+ */
 void push(char (*arr)[], int *index, const char element){
   (*arr)[(*index)++] = element; 
 }
 
+/** Test hook.
+ * Tests the functionality of the push() method. 
+ */
 int push_th(){
   char buffer[10] = {'h','e', 'l', 'l'};
   int index = 4;
@@ -128,12 +203,26 @@ int push_th(){
   return 1;
 }
 
+/** Test hook.
+ * Tests the functionality of the flush_buffer() method. 
+ */
 int flush_buffer_th(){
   // Test hook for flush_buffer
   char buffer[10] = {'h','e','l','l','o'};
-  flush_buffer(&buffer, 5);
+  int count = 5;
+  flush_buffer(&buffer, &count);
   for(int i = 0; i < 10; ++i)
     if( buffer[i] != '\0' ) return 0;
 
   return 1;
+}
+
+void contraction(char (*buffer)[], int *count){
+  flush_buffer(buffer, count);
+  int c = getchar();
+  for(;;) {
+    printf("%c", c);
+    c = getchar();
+    if((isalnum(c) || ispunct(c)) && c != '\0') { printf("%c", c); break;}
+  }
 }

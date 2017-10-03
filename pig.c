@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-//#include "pigify.c"
+#include "pigify.h"
 #include "pig.h"
 
 /* Static function definitions */
@@ -11,7 +11,6 @@
  *
  *
  */
-int main(int argc, char *argv[]){
-  int c = getchar();
-  
+int main(){
+  structure(&pigify);
 }

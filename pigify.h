@@ -1,5 +1,10 @@
 #define BUFFER_LENGTH 103
 
+#ifndef STRUCTURE
+#define STRUCTURE
+void structure(void(*)(char(*)[]));
+#endif
+
 #ifndef PIGIFY
 #define PIGIFY
 void pigify(char (*)[]);
@@ -22,7 +27,7 @@ void push(char (*)[], int *, const char);
 
 #ifndef FLUSH_BUFFER
 #define FLUSH_BUFFER
-void flush_buffer(char(*)[], const size_t);
+void flush_buffer(char(*)[], int *);
 #endif
 
 #ifndef TEST_HOOKS
