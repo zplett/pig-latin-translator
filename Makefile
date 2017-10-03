@@ -30,12 +30,5 @@ unpig.o: unpig.c pigify.c pigify.h
 unpig: unpig.o pigify.o pigify.o
 	$(CC) -g unpig.o pigify.o -o unpig
 
-
-#%.o: %.c pigify.c pigify.h
-#	$(CC) -c $< pigify.c 
-
-#% : %.o pigify.o pigify.h
-#	$(CC) $< pigify.o -o $@
-
 clean:
-	rm -rf *.o pig test *.dSYM *~
+	rm -rf *.o unpig pig test *.dSYM *~
