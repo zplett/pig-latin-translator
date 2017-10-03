@@ -2,6 +2,5 @@
 #include "pigify.h"
 
 int main() {
-  
-
+  structure(&anglofy);
 }

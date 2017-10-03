@@ -3,6 +3,7 @@
  *
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "pigify.h"
@@ -12,11 +13,51 @@ void pigify(char (*)[]);
 void anglofy(char (*)[]);
 int is_vowel(char, int);
 void push(char (*)[], int *, const char);
-void flush_buffer(char(*)[], const size_t);
+void flush_buffer(char(*)[], int*);
 int push_th();
 int flush_buffer_th();
+void structure(void(*)(char(*)[]));
+void contraction(char (*)[], int*);
 // End of function declarations //
 
+
+void structure(void(*function)(char(*)[])){
+  static char buffer[BUFFER_LENGTH] = {'\0'};
+  for( int c = getchar(), count = 0; c != EOF; c = getchar()){
+    if(ispunct(c)){
+      if (c == '\'')  {
+        ungetc(c, stdin);
+        contraction(&buffer, &count);
+        continue;
+      }
+      if(count > 0) {
+        ungetc(c, stdin);
+        function(&buffer);
+        flush_buffer(&buffer, &count);
+        continue;
+      }
+      else {
+        printf("%c", c);
+        continue;
+      }
+    }
+    else if(isspace(c)){
+      if( count == 0 ) { printf("%c", c); continue; }
+      function(&buffer);
+      flush_buffer(&buffer, &count);
+      printf("%c", c);
+      continue;
+    }  
+    else if(isalpha(c)){
+      push(&buffer, &count, c);
+      if(count == BUFFER_LENGTH){
+        function(&buffer);
+        flush_buffer(&buffer, &count);
+      }
+      continue;
+    }
+  }
+}
 
 /** Rearranges the entered array (representing a word in English) to represent a word in Pig Latin.
  *
@@ -53,7 +94,7 @@ void pigify(char (*arr)[]) {
         strcat((*arr), yay);
         break;
       }
-      else if (i > 1) {
+      else if (i >= 1) {
         for (int j = 0; j < BUFFER_LENGTH; j++) { if (local_arr[j] == '\0') break; else count++; }
         for (int k = 0; k < BUFFER_LENGTH; k++) { 
           (*arr)[k] = (*arr)[k+count];
@@ -107,11 +148,13 @@ int is_vowel(char ch, int count) {
 
 
 
-void flush_buffer(char (*buffer)[], size_t count){
-  for(size_t i = 0; i < count; ++i) {
+void flush_buffer(char (*buffer)[], int *count){
+  int offset = (*buffer)[*count] == 'y' ? 3 : 2;
+  for(int i = 0; i < *count + offset; ++i) {
     printf("%c", (*buffer)[i]);
     (*buffer)[i] = '\0';
   }
+  *count = 0;
 }
 
 void push(char (*arr)[], int *index, const char element){
@@ -131,9 +174,20 @@ int push_th(){
 int flush_buffer_th(){
   // Test hook for flush_buffer
   char buffer[10] = {'h','e','l','l','o'};
-  flush_buffer(&buffer, 5);
+  int count = 5;
+  flush_buffer(&buffer, &count);
   for(int i = 0; i < 10; ++i)
     if( buffer[i] != '\0' ) return 0;
 
   return 1;
+}
+
+void contraction(char (*buffer)[], int *count){
+  flush_buffer(buffer, count);
+  int c = getchar();
+  for(;;) {
+    printf("%c", c);
+    c = getchar();
+    if((isalnum(c) || ispunct(c)) && c != '\0') { printf("%c", c); break;}
+  }
 }
