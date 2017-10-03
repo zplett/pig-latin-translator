@@ -1,3 +1,33 @@
-TODO: README
-
 DOCUMENTATION LINK: https://oberlin-cs241.github.io/hw3-ezra-goss/files.html
+
+1. Zac Plett and Ezra Goss - This program converts English words to Pig Latin, removes the Pig Latin aspect of an already translated word, and translates from English to "valley girl."
+
+2. Files:
+   - pig_man.1 : A Manual Page for the program pig.c
+
+   - unpig_man.1 : A Manual Page for the program unpig.c
+
+   - test.c : A test file designed to test the validity of the methods in our program
+
+   - testfile : A text file with sample text used for translating and untranslating
+
+   - Makefile : A makefile that compiles and links the files needed for constructing executables
+
+   - pigify.h : A header file containing methods and global variables used throughout the program
+
+   - pigify.c : Handles taking in input and translating it to the proper dialect
+
+   - pig.c : Calls pigify.c to translate into Pig Latin
+
+   - unpig.c : Calls pigify.c to undo the Pig Latin translation
+
+   - docs and Doxyfile : Used for Doxygen ( documentation tool linked at the top of the README )
+
+3.
+   There are no known bugs or issues with the code. All functions and functionality are complete.
+
+4.
+   This lab took us an estimated 10 hours to complete.
+
+5.
+   We affirm that we have adhered to the Honor Code on this assignment. 
