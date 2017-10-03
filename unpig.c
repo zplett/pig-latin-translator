@@ -5,6 +5,6 @@
 #include "pig.h"
 
 
-int main(int argc, char *argv[]) {
+int main() {
   structure(&anglofy);
 }
