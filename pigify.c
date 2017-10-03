@@ -111,6 +111,28 @@ void pigify(char (*arr)[]) {
   }
 }
 
+/** Rearranges the elements in an array to undo the Pig Latin translation.
+ *
+ * The algorithm is as follows:
+ * 
+ * First find the index of the third to last character in the array and its corresponding value. We do this because the Pig Latin ending will either be the three letters "yay" or a non-y letter followed
+ * by "ay". 
+ * We find this by looping through the indicies of the array until the value of the current index + 3 is equal to the null character ('\0'). This provides us with the third to last character because 
+ * all indicies in the array after the last character will be null. We store this character in a char variable "third" and the index in an int variable "index".
+ * Next, to figure out how to unpigify the word, we figure out which of the two cases the current word falls under. The two cases are if the third to last letter is a 'y' (making the ending "yay") which 
+ * means the word had a vowel as its first letter or if the third to last letter isn't a 'y' (making the ending "ay") then there were some unknown number of consonants that came before the first vowel. 
+ * If the word falls under the first case, then to unpigify it we simply remove the last three indicies by looping from index to index + 3 and setting those values to the null character. 
+ * If the word falls under the second case, then to unpigify it we first remove the ending, which will be a non-y letter followed by "ay". To unpigify after removing the ending we need to put the former
+ * third to last letter (stored in "third") at the front (Note: we realize that this won't always produce an accurate translation into English as that will only work if the original English word had 
+ * only one consonant before the first value. However this still accurately unpigifies a word as it removes the pig latin ending and attempts to rearrange the letters to form an English word. Since we 
+ * don't know how many letters came before the first vowel this will give us a close approximation and follows the integrity of the assignment as we were told to not worry about whether or not the 
+ * unpigify produces an English word so long as it properly removes the Pig Latin aspect of the word).
+ * This is done in the same manner as removing the "yay" ending described in the first case. After this we shift all the values at each index to the right by one to leave a space at the front of the 
+ * array for the former third to last letter. After all values are properly shifted we place the "third" value in the first index (0th) of the array. 
+ *
+ * This produces an accurate removal of the Pig Latin translation. 
+ *
+ */
 void anglofy(char (*arr)[]) {
   char third = '\0';
   int index;
@@ -148,6 +170,9 @@ int is_vowel(char ch, int count) {
 
 
 
+/** Flushes a given buffer.
+ * This method flushes an input buffer given the array and its associated count representing the size of the array. We loop through the indicies from 0 to count, print the value at each index, and then 
+ * set the corresponding value to be the null character as flushed arrays have null characters for all of their indicies. 
 void flush_buffer(char (*buffer)[], int *count){
   int offset = (*buffer)[*count] == 'y' ? 3 : 2;
   for(int i = 0; i < *count + offset; ++i) {
@@ -157,10 +182,16 @@ void flush_buffer(char (*buffer)[], int *count){
   *count = 0;
 }
 
+/** Pushes an element to a specified index in a given array.
+ * Given the input element, corresponding index, and array, we set the array's value at the index to be the element.
+ */
 void push(char (*arr)[], int *index, const char element){
   (*arr)[(*index)++] = element; 
 }
 
+/** Test hook.
+ * Tests the functionality of the push() method. 
+ */
 int push_th(){
   char buffer[10] = {'h','e', 'l', 'l'};
   int index = 4;
@@ -171,6 +202,9 @@ int push_th(){
   return 1;
 }
 
+/** Test hook.
+ * Tests the functionality of the flush_buffer() method. 
+ */
 int flush_buffer_th(){
   // Test hook for flush_buffer
   char buffer[10] = {'h','e','l','l','o'};
