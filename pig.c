@@ -7,6 +7,7 @@
 /** This program reads input flags if any are entered and if not calls the translation function 
  * to translate from English to Pig Latin.
  */
+
 int main(int argc, char *argv[]){
   if (argc > 1) {
     if ( ((strcmp(argv[1], "-?")) == 0) || ((strcmp(argv[1], "-h")) == 0) ) {
@@ -18,5 +19,3 @@ int main(int argc, char *argv[]){
       return 0;
     }
   }
-  structure(&pigify);
-}

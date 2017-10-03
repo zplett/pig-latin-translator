@@ -4,6 +4,7 @@
 #include "pigify.h"
 #include "pig.h"
 
+
 /** This program reads input flags if any are entered and if not calls the translation frunction to
  * undo Pig Latin translation. 
  */
@@ -18,5 +19,3 @@ int main(int argc, char *argv[]) {
       return 0;
     }
   }
-  structure(&anglofy);
-}

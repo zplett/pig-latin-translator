@@ -6,11 +6,11 @@
  * 
  */
 void test_pigify(){
-  char arr[BUFFER_LENGTH] = {'h','e','l','l','o'};
-  char ref[BUFFER_LENGTH] = {'e','l','l','o','h','a','y'};
+  char arr[BUFFER_LENGTH] = {'h','r','e','l','l','o'};
+  char ref[BUFFER_LENGTH] = {'e','l','l','o','h','r','a','y'};
   pigify(&arr);
   assert( arr[0] == 'e' );
-  for(int i = 0; ref[i] != '\0'; ++i) { assert ( arr[i] == ref[i]); } 
+  for(int i = 0; ref[i] != '\0'; ++i) {  assert ( arr[i] == ref[i] ); }
 }
 
 void test_anglofy(){

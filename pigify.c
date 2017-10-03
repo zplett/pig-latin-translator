@@ -94,19 +94,19 @@ void structure(void(*function)(char(*)[])){
  *
  */ 
 void pigify(char (*arr)[]) {
-  char local_arr[BUFFER_LENGTH], ay[3], yay[4];
+  char *local_arr = malloc(strlen(*arr) + 1), ay[3], yay[4];
   int count = 0;
   strcpy(ay, "ay");
   strcpy(yay, "yay");
   for (int i = 0; i < BUFFER_LENGTH; i++) {
     if ((*arr)[i] == '\0') break;
     int valid = is_vowel((*arr)[i], i);
-    if (valid == 0) {
+    if (valid == 1) {
       if (i == 0) {
         strcat((*arr), yay);
         break;
       }
-      else if (i >= 1) {
+      else if (i > 0) {
         for (int j = 0; j < BUFFER_LENGTH; j++) { if (local_arr[j] == '\0') break; else count++; }
         for (int k = 0; k < BUFFER_LENGTH; k++) { 
           (*arr)[k] = (*arr)[k+count];
@@ -121,6 +121,7 @@ void pigify(char (*arr)[]) {
       local_arr[i] = (*arr)[i];
     }
   }
+  free(local_arr);
 }
 
 /** Rearranges the elements in an array to undo the Pig Latin translation.
@@ -174,9 +175,9 @@ void anglofy(char (*arr)[]) {
 int is_vowel(char ch, int count) {
  ch = tolower(ch);
  switch(ch){
- case 'a': case 'e': case 'i': case 'o': case 'u': return 0;
- case 'y': if (count > 0) return 0;
- default: return 1;
+ case 'a': case 'e': case 'i': case 'o': case 'u': return 1;
+ case 'y': if (count > 0) return 1;
+ default: return 0;
  }
 }
 

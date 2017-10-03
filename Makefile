@@ -10,13 +10,13 @@ else
 endif
 # End of OS specification
 
-all: pig unpig test
+all: pig unpig test extra
 
 pig.o: pig.c pig.h pigify.c pigify.h
 	$(CC) -c pig.c pigify.c
 
 pig: pig.o pig.h pigify.o pigify.o
-	$(CC) -g pig.o pigify.o -o pig
+	$(CC)  pig.o pigify.o -o pig
 
 test.o: test.c pig.c pig.h pigify.c pigify.h
 	$(CC) -c test.c pig.c pigify.c
@@ -28,7 +28,14 @@ unpig.o: unpig.c pigify.c pigify.h
 	$(CC) -c unpig.c pigify.c
 
 unpig: unpig.o pigify.o pigify.o
-	$(CC) -g unpig.o pigify.o -o unpig
+	$(CC) unpig.o pigify.o -o unpig
+  
+extra.o: extra.c
+	$(CC) -c extra.c
+
+extra: extra.o
+	$(CC) extra.o -o extra
 
 clean:
-	rm -rf *.o unpig pig test *.dSYM *~
+	rm -rf *.o unpig pig extra test *.dSYM *~
+
