@@ -149,7 +149,7 @@ int is_vowel(char ch, int count) {
 
 
 void flush_buffer(char (*buffer)[], int *count){
-  int offset = (*buffer)[*count] == 'y' ? 3 : 2; 
+  int offset = (*buffer)[*count] == 'y' ? 3 : 2;
   for(int i = 0; i < *count + offset; ++i) {
     printf("%c", (*buffer)[i]);
     (*buffer)[i] = '\0';
@@ -183,12 +183,11 @@ int flush_buffer_th(){
 }
 
 void contraction(char (*buffer)[], int *count){
-  char newbuff[BUFFER_LENGTH];
-  int c = getchar();
-  for(int i = 0;; ++i){
-    if(isspace(c) || c == EOF) break; 
-    newbuff[i] = c;
-  }
-  strcat(*buffer, newbuff);
   flush_buffer(buffer, count);
+  int c = getchar();
+  for(;;) {
+    printf("%c", c);
+    c = getchar();
+    if((isalnum(c) || ispunct(c)) && c != '\0') { printf("%c", c); break;}
+  }
 }
