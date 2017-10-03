@@ -5,6 +5,8 @@
 \item 
 \#define \mbox{\hyperlink{pigify_8h_af7b7dc9a200cb1404c280bd500fd1551}{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}~103
 \item 
+\#define \mbox{\hyperlink{pigify_8h_aadcac9b6ab7fe872bd25ef5ea4ba87e4}{P\+I\+G\+I\+FY}}
+\item 
 \#define \mbox{\hyperlink{pigify_8h_aeb9076d037a324e4a2887b8e03ea65f1}{I\+S\+\_\+\+V\+O\+W\+EL}}
 \item 
 \#define \mbox{\hyperlink{pigify_8h_aff971785e930e540a2157f81766005a7}{A\+N\+G\+L\+O\+FY}}
@@ -18,20 +20,22 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{pigify_8h_a2f23bd85e7c7d88b228b41bd688dd492}{structure}} (void($\ast$)(char($\ast$)\mbox{[}$\,$\mbox{]}))
+\begin{DoxyCompactList}\small\item\em Abstracted method used to get input and correctly call the desired translation functions ( \mbox{\hyperlink{pigify_8c_a88eabc54c23b2f03fb48cc6b8e45f08a}{pigify()}} and \mbox{\hyperlink{pigify_8c_aba85134ab17bdbdc3a385b6ee56f0447}{anglofy()}} ) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{pigify_8h_a8df909ff82ef61c92ca60dd86ea98266}{pigify}} (char($\ast$)\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Rearranges the entered array (representing a word in English) to represent a word in Pig Latin. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}{is\+\_\+vowel}} (char, int)
 \begin{DoxyCompactList}\small\item\em Validates whether a given char is a vowel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{pigify_8h_a1887b5243c0b6f64e3e8b1c84e155459}{anglofy}} (char($\ast$)\mbox{[}$\,$\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Rearranges the elements in an array to undo the Pig Latin translation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{pigify_8h_a048dc662b47a5df34cb128566c15bf60}{push}} (char($\ast$)\mbox{[}$\,$\mbox{]}, int $\ast$, const char)
-\item 
-void \mbox{\hyperlink{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}{flush\+\_\+buffer}} (char($\ast$)\mbox{[}$\,$\mbox{]}, const size\+\_\+t)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes an element to a specified index in a given array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pigify_8h_a7389dc65f90f27f828fb8da67cdcfc05}{flush\+\_\+buffer}} (char($\ast$)\mbox{[}$\,$\mbox{]}, int $\ast$)
+\begin{DoxyCompactList}\small\item\em Flushes a given buffer. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{pigify_8h_a20e656e57f8684c55987853a13a4d448}{push\+\_\+th}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Test hook. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{pigify_8h_aa8d58a71b871356799bb1380214aa93e}{flush\+\_\+buffer\+\_\+th}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Test hook. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -59,6 +63,12 @@ int \mbox{\hyperlink{pigify_8h_aa8d58a71b871356799bb1380214aa93e}{flush\+\_\+buf
 \subsubsection{\texorpdfstring{I\+S\+\_\+\+V\+O\+W\+EL}{IS\_VOWEL}}
 {\footnotesize\ttfamily \#define I\+S\+\_\+\+V\+O\+W\+EL}
 
+\mbox{\Hypertarget{pigify_8h_aadcac9b6ab7fe872bd25ef5ea4ba87e4}\label{pigify_8h_aadcac9b6ab7fe872bd25ef5ea4ba87e4}} 
+\index{pigify.\+h@{pigify.\+h}!P\+I\+G\+I\+FY@{P\+I\+G\+I\+FY}}
+\index{P\+I\+G\+I\+FY@{P\+I\+G\+I\+FY}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+G\+I\+FY}{PIGIFY}}
+{\footnotesize\ttfamily \#define P\+I\+G\+I\+FY}
+
 \mbox{\Hypertarget{pigify_8h_a431b92b32ec924789b2be268651a3fdd}\label{pigify_8h_a431b92b32ec924789b2be268651a3fdd}} 
 \index{pigify.\+h@{pigify.\+h}!P\+U\+SH@{P\+U\+SH}}
 \index{P\+U\+SH@{P\+U\+SH}!pigify.\+h@{pigify.\+h}}
@@ -78,21 +88,37 @@ int \mbox{\hyperlink{pigify_8h_aa8d58a71b871356799bb1380214aa93e}{flush\+\_\+buf
 \index{pigify.\+h@{pigify.\+h}!anglofy@{anglofy}}
 \index{anglofy@{anglofy}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{anglofy()}{anglofy()}}
-{\footnotesize\ttfamily void anglofy (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void anglofy (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}\label{pigify_8h_adfee288c1bc1cbf78ede8f6938bbb486}} 
+
+
+Rearranges the elements in an array to undo the Pig Latin translation. 
+
+The algorithm is as follows\+:
+
+First find the index of the third to last character in the array and its corresponding value. We do this because the Pig Latin ending will either be the three letters \char`\"{}yay\char`\"{} or a non-\/y letter followed by \char`\"{}ay\char`\"{}. We find this by looping through the indicies of the array until the value of the current index + 3 is equal to the null character (\textquotesingle{}\textbackslash{}0\textquotesingle{}). This provides us with the third to last character because all indicies in the array after the last character will be null. We store this character in a char variable \char`\"{}third\char`\"{} and the index in an int variable \char`\"{}index\char`\"{}. Next, to figure out how to unpigify the word, we figure out which of the two cases the current word falls under. The two cases are if the third to last letter is a \textquotesingle{}y\textquotesingle{} (making the ending \char`\"{}yay\char`\"{}) which means the word had a vowel as its first letter or if the third to last letter isn\textquotesingle{}t a \textquotesingle{}y\textquotesingle{} (making the ending \char`\"{}ay\char`\"{}) then there were some unknown number of consonants that came before the first vowel. If the word falls under the first case, then to unpigify it we simply remove the last three indicies by looping from index to index + 3 and setting those values to the null character. If the word falls under the second case, then to unpigify it we first remove the ending, which will be a non-\/y letter followed by \char`\"{}ay\char`\"{}. To unpigify after removing the ending we need to put the former third to last letter (stored in \char`\"{}third\char`\"{}) at the front (Note\+: we realize that this won\textquotesingle{}t always produce an accurate translation into English as that will only work if the original English word had only one consonant before the first value. However this still accurately unpigifies a word as it removes the pig latin ending and attempts to rearrange the letters to form an English word. Since we don\textquotesingle{}t know how many letters came before the first vowel this will give us a close approximation and follows the integrity of the assignment as we were told to not worry about whether or not the unpigify produces an English word so long as it properly removes the Pig Latin aspect of the word). This is done in the same manner as removing the \char`\"{}yay\char`\"{} ending described in the first case. After this we shift all the values at each index to the right by one to leave a space at the front of the array for the former third to last letter. After all values are properly shifted we place the \char`\"{}third\char`\"{} value in the first index (0th) of the array.
+
+This produces an accurate removal of the Pig Latin translation. \mbox{\Hypertarget{pigify_8h_a7389dc65f90f27f828fb8da67cdcfc05}\label{pigify_8h_a7389dc65f90f27f828fb8da67cdcfc05}} 
 \index{pigify.\+h@{pigify.\+h}!flush\+\_\+buffer@{flush\+\_\+buffer}}
 \index{flush\+\_\+buffer@{flush\+\_\+buffer}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{flush\+\_\+buffer()}{flush\_buffer()}}
-{\footnotesize\ttfamily void flush\+\_\+buffer (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]},  }\item[{const size\+\_\+t}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void flush\+\_\+buffer (\begin{DoxyParamCaption}\item[{char($\ast$)}]{buffer\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{count }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{pigify_8h_aa8d58a71b871356799bb1380214aa93e}\label{pigify_8h_aa8d58a71b871356799bb1380214aa93e}} 
+
+
+Flushes a given buffer. 
+
+This method flushes an input buffer given the array and its associated count representing the size of the array. We loop through the indicies from 0 to count, print the value at each index, and then set the corresponding value to be the null character as flushed arrays have null characters for all of their indicies. \mbox{\Hypertarget{pigify_8h_aa8d58a71b871356799bb1380214aa93e}\label{pigify_8h_aa8d58a71b871356799bb1380214aa93e}} 
 \index{pigify.\+h@{pigify.\+h}!flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}}
 \index{flush\+\_\+buffer\+\_\+th@{flush\+\_\+buffer\+\_\+th}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{flush\+\_\+buffer\+\_\+th()}{flush\_buffer\_th()}}
 {\footnotesize\ttfamily int flush\+\_\+buffer\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}\label{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}} 
+
+
+Test hook. 
+
+Tests the functionality of the \mbox{\hyperlink{pigify_8c_a5df06993a607236fa341f30327dff34d}{flush\+\_\+buffer()}} method. \mbox{\Hypertarget{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}\label{pigify_8h_a1dfdd9dd27125b8594ef203602171e6d}} 
 \index{pigify.\+h@{pigify.\+h}!is\+\_\+vowel@{is\+\_\+vowel}}
 \index{is\+\_\+vowel@{is\+\_\+vowel}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{is\+\_\+vowel()}{is\_vowel()}}
@@ -120,11 +146,36 @@ This produces the correctly \char`\"{}pigified\char`\"{} word. \mbox{\Hypertarge
 \index{pigify.\+h@{pigify.\+h}!push@{push}}
 \index{push@{push}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{push()}{push()}}
-{\footnotesize\ttfamily void push (\begin{DoxyParamCaption}\item[{char($\ast$)}]{\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{,  }\item[{const char}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void push (\begin{DoxyParamCaption}\item[{char($\ast$)}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{index,  }\item[{const char}]{element }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{pigify_8h_a20e656e57f8684c55987853a13a4d448}\label{pigify_8h_a20e656e57f8684c55987853a13a4d448}} 
+
+
+Pushes an element to a specified index in a given array. 
+
+Given the input element, corresponding index, and array, we set the array\textquotesingle{}s value at the index to be the element. \mbox{\Hypertarget{pigify_8h_a20e656e57f8684c55987853a13a4d448}\label{pigify_8h_a20e656e57f8684c55987853a13a4d448}} 
 \index{pigify.\+h@{pigify.\+h}!push\+\_\+th@{push\+\_\+th}}
 \index{push\+\_\+th@{push\+\_\+th}!pigify.\+h@{pigify.\+h}}
 \subsubsection{\texorpdfstring{push\+\_\+th()}{push\_th()}}
 {\footnotesize\ttfamily int push\+\_\+th (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Test hook. 
+
+Tests the functionality of the \mbox{\hyperlink{pigify_8c_ab3b26fd4e21366296c5f75851616d93d}{push()}} method. \mbox{\Hypertarget{pigify_8h_a2f23bd85e7c7d88b228b41bd688dd492}\label{pigify_8h_a2f23bd85e7c7d88b228b41bd688dd492}} 
+\index{pigify.\+h@{pigify.\+h}!structure@{structure}}
+\index{structure@{structure}!pigify.\+h@{pigify.\+h}}
+\subsubsection{\texorpdfstring{structure()}{structure()}}
+{\footnotesize\ttfamily void structure (\begin{DoxyParamCaption}\item[{void($\ast$)(char($\ast$)\mbox{[}$\,$\mbox{]})}]{function }\end{DoxyParamCaption})}
+
+
+
+Abstracted method used to get input and correctly call the desired translation functions ( \mbox{\hyperlink{pigify_8c_a88eabc54c23b2f03fb48cc6b8e45f08a}{pigify()}} and \mbox{\hyperlink{pigify_8c_aba85134ab17bdbdc3a385b6ee56f0447}{anglofy()}} ) 
+
+\mbox{\hyperlink{pigify_8c_abfc2769207e8abe67a7f5f822b569568}{structure()}} takes in the desired translation function and uses this to pass the input words to this method. The algorith is as follows\+:
+
+Continually call getchar() to receive user input. If the input char is a punctuation mark, first determine whether or not it\textquotesingle{}s an apostrophe. If it is, that means the current word is a contraction, the program then calls the \mbox{\hyperlink{pigify_8c_ae50c73ce23694b6bf725e5b8aab34138}{contraction()}} method that handles this case by leaving the input in the same state it was entered in. If it\textquotesingle{}s any other punctuation mark and not the first entered character, the program ungets the char, calls the translation function on the current buffer (as punctuation signals the end of a word) and then flushes the buffer using \mbox{\hyperlink{pigify_8c_a5df06993a607236fa341f30327dff34d}{flush\+\_\+buffer()}}. Else, if it\textquotesingle{}s a punctuation mark and the first character in the word, the program just prints the char.
+
+If the character is a space, the program then prints it if it\textquotesingle{}s the first character and otherwise it calls the translation function, flushes the buffer, and then prints the space.
+
+Otherwise, if it\textquotesingle{}s a letter, the program pushes the letter to the array using \mbox{\hyperlink{pigify_8c_ab3b26fd4e21366296c5f75851616d93d}{push()}} and then calls the translation function and flushes the buffer if the word is at max length. 
