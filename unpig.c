@@ -4,6 +4,7 @@
 #include "pigify.h"
 #include "pig.h"
 
+
 int main(int argc, char *argv[]) {
-  
+  structure(&anglofy);
 }
